@@ -1,7 +1,7 @@
 import boto3
 import json
 import os
-from moto import mock_dynamodb2
+from moto import mock_aws
 from unittest.mock import patch
 from src.create_activity import app
 from contextlib import contextmanager
@@ -15,7 +15,7 @@ with open(event_data, 'r') as f:
 
 @contextmanager
 def do_test_setup():
-    with mock_dynamodb2():
+    with mock_aws():
         set_up_dynamodb()
         yield
 
